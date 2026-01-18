@@ -17,7 +17,7 @@ DESKTOP="/c/Users/Asus/OneDrive/Desktop"
 mkdir -p "$DESKTOP"
 
 DATE=$(date +"%Y-%m-%d_%H-%M")
-BACKUP_NAME="$DESKTOP/backup_$DATE.tar.gz"
+BACKUP_NAME="/c/Users/Asus/OneDrive/Desktop/backup_$DATE.tar.gz"
 
 # Budowanie wykluczeń jako tablica
 EXCLUDE_PARAMS=()
