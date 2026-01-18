@@ -11,7 +11,7 @@ shift
 EXCLUDES=$@
 
 # Ścieżka do Pulpitu
-DESKTOP="/c/Users/Asus/OneDrive/Desktop"
+DESKTOP="/c/Users/Asus/Desktop"
 
 # Data
 DATE=$(date +"%Y-%m-%d_%H-%M")
