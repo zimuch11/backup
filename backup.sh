@@ -6,8 +6,7 @@
 
 # Sprawdzenie parametrów
 if [ "$#" -lt 1 ]; then
-    echo "Uzycie:"
-    echo "$0 <katalog_do_backupu> [maski_wykluczen...]"
+    echo "Blad uzycia"
     exit 1
 fi
 
@@ -17,7 +16,7 @@ shift
 EXCLUDES=$@
 
 # Ścieżka do Pulpitu
-DESKTOP="/c/Users/$USERNAME/Desktop"
+DESKTOP="/c/Users/Asus/OneDrive/Desktop"
 
 # Data
 DATE=$(date +"%Y-%m-%d_%H-%M")
