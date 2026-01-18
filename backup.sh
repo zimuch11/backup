@@ -13,6 +13,8 @@ EXCLUDES=$@
 # Ścieżka do Pulpitu
 DESKTOP="/c/Users/Asus/OneDrive/Desktop"
 
+mkdir -p "$DESKTOP"
+
 # Data
 DATE=$(date +"%Y-%m-%d_%H-%M")
 BACKUP_NAME="$DESKTOP/backup_$DATE.tar.gz"
