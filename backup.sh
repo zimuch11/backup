@@ -1,14 +1,19 @@
 #!/bin/bash
 
-if [ "$#" -lt 2 ]; then
-    echo "Blad uzycia"
+# =========================
+# BACKUP LOKALNY (bez SFTP)
+# =========================
+
+# Sprawdzenie parametrów
+if [ "$#" -lt 1 ]; then
+    echo "Uzycie:"
+    echo "$0 <katalog_do_backupu> [maski_wykluczen...]"
     exit 1
 fi
 
 # Parametry
 SOURCE_DIR=$1
-REMOTE_TARGET=$2
-shift 2
+shift
 EXCLUDES=$@
 
 # Ścieżka do Pulpitu
@@ -24,7 +29,7 @@ for pattern in $EXCLUDES; do
     EXCLUDE_PARAMS+=" --exclude=$pattern"
 done
 
-echo "Tworzenie backupu na pulpicie..."
+echo "Tworzenie backupu na Pulpicie..."
 
 # Tworzenie archiwum
 tar -czf "$BACKUP_NAME" $EXCLUDE_PARAMS -C "$SOURCE_DIR" .
@@ -37,26 +42,4 @@ fi
 
 echo "Backup zapisany:"
 echo "$BACKUP_NAME"
-
-# Podzial adresu serwera
-USER_HOST=$(echo $REMOTE_TARGET | cut -d':' -f1)
-REMOTE_DIR=$(echo $REMOTE_TARGET | cut -d':' -f2)
-
-echo "Wysylanie na serwer..."
-
-# SFTP
-sftp $USER_HOST <<EOF
-cd $REMOTE_DIR
-put "$BACKUP_NAME"
-bye
-EOF
-
-# Sprawdzenie
-if [ $? -eq 0 ]; then
-    echo "Backup wyslany poprawnie."
-else
-    echo "Blad podczas wysylania!"
-fi
-
-
 
