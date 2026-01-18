@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# =========================
-# BACKUP LOKALNY (bez SFTP)
-# =========================
-
-# Sprawdzenie parametrów
 if [ "$#" -lt 1 ]; then
     echo "Blad uzycia"
     exit 1
